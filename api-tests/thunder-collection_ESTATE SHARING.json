@@ -1,0 +1,1040 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "ESTATE SHARING",
+    "dateExported": "2023-04-24T14:19:32.845Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "92e0909f-99df-4955-b0f1-d2bcc9322eba",
+            "name": "User",
+            "containerId": "",
+            "created": "2023-04-19T12:48:27.793Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "855bfd20-e19e-4cf7-9ed6-a8b7e27d2b0c",
+            "name": "Estate",
+            "containerId": "",
+            "created": "2023-04-19T12:48:34.893Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "adb836ba-c365-44f2-a1fb-cd026179902e",
+            "name": "Contract",
+            "containerId": "",
+            "created": "2023-04-19T12:48:40.570Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "3cbb749a-4c6e-474d-aa64-5c0d66e6abdf",
+            "name": "Join Post",
+            "containerId": "",
+            "created": "2023-04-19T12:49:00.290Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "3a09b18d-99aa-4f02-ad4a-686c900fe9b1",
+            "name": "Join Request",
+            "containerId": "",
+            "created": "2023-04-19T12:49:08.521Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "3253f560-74e5-4244-a291-3f4dd09e4518",
+            "name": "Rent Request",
+            "containerId": "",
+            "created": "2023-04-19T12:49:21.996Z",
+            "sortNum": 60000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "ce24ef7b-a583-4225-8f56-43f5377c7f75",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3a09b18d-99aa-4f02-ad4a-686c900fe9b1",
+            "name": "Update",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinRequest/update?id=64455fff10cebad515f8deb2",
+            "method": "PUT",
+            "sortNum": 1250,
+            "created": "2023-04-21T06:43:22.714Z",
+            "modified": "2023-04-24T13:23:44.978Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "64455fff10cebad515f8deb2",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"status\":\"Accepted\",\n  \"responseDate\":\"1682077313398\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "91b22043-79e2-4a86-bc75-b581e6ae345c",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3a09b18d-99aa-4f02-ad4a-686c900fe9b1",
+            "name": "Add",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinRequest/add",
+            "method": "POST",
+            "sortNum": 2500,
+            "created": "2023-04-21T06:43:18.508Z",
+            "modified": "2023-04-23T15:28:48.972Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"estateId\": \"6443e94f3f8094c409ba7ff9\",\n  \"joinPost\": \"64454d31dfdae498df3a6f5b\",\n  \"requestingUserId\": \"644115394c883bf6162ff45a\",\n  \"fullName\": \"Muyango Bailly\",\n  \"email\": \"hirwajeric@gmail.com\",\n  \"phone\": \"0789384343\",\n  \"age\": \"26\",\n  \"gender\": \"Male\",\n  \"comment\": \"Hello\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8cd34197-1eb1-46ac-871e-e40689cec19f",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3a09b18d-99aa-4f02-ad4a-686c900fe9b1",
+            "name": "Delete",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinRequest/delete?id=",
+            "method": "DELETE",
+            "sortNum": 3125,
+            "created": "2023-04-21T06:43:26.355Z",
+            "modified": "2023-04-21T10:54:21.381Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "ba2fe0da-a674-4faf-bb07-91b697b21f35",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3a09b18d-99aa-4f02-ad4a-686c900fe9b1",
+            "name": "Find by estate id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinRequest/findByEstateId?estateId=6440f514cc6bb0bc919dc120",
+            "method": "GET",
+            "sortNum": 3750,
+            "created": "2023-04-21T06:43:35.720Z",
+            "modified": "2023-04-21T11:42:41.494Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "estateId",
+                    "value": "6440f514cc6bb0bc919dc120",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "7f0d270a-4fbf-4698-b82d-f04f8fec048c",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3a09b18d-99aa-4f02-ad4a-686c900fe9b1",
+            "name": "List",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinRequest/list",
+            "method": "GET",
+            "sortNum": 5000,
+            "created": "2023-04-21T06:43:11.923Z",
+            "modified": "2023-04-21T10:54:59.901Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "78eaa346-7960-452d-89f6-b30b60c4e80d",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "92e0909f-99df-4955-b0f1-d2bcc9322eba",
+            "name": "Sign in",
+            "url": "{{ESTATE_SHARING_LOCAL}}/user/signin",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-04-19T12:48:13.585Z",
+            "modified": "2023-04-20T07:38:38.762Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"hirwajeaneric25@gmail.com\",\n  \"password\":\"Emmanuel123!\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "46a42f83-2d3a-4532-b92f-681ddfe32de9",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3a09b18d-99aa-4f02-ad4a-686c900fe9b1",
+            "name": "Find by join post",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinRequest/findByJoinPost?joinPost=",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-04-21T06:38:04.242Z",
+            "modified": "2023-04-21T06:57:09.288Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "joinPost",
+                    "value": "",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "c0e7fee7-7bf9-4586-810b-df9deecca2ac",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "92e0909f-99df-4955-b0f1-d2bcc9322eba",
+            "name": "Sign up",
+            "url": "{{ESTATE_SHARING_LOCAL}}/user/signup",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-04-19T12:48:47.329Z",
+            "modified": "2023-04-21T10:06:05.077Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "fullName",
+                        "value": "John Doe"
+                    },
+                    {
+                        "name": "email",
+                        "value": "johndoe@gmail.com"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "0789284310"
+                    },
+                    {
+                        "name": "nationality",
+                        "value": "USA"
+                    },
+                    {
+                        "name": "nationalId",
+                        "value": "1200099332234567",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "passportNumber",
+                        "value": "us322193"
+                    },
+                    {
+                        "name": "password",
+                        "value": "John123!"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "profilePicture",
+                        "value": "/home/hirwa/Pictures/Screenshots/Screenshot from 2022-07-19 10-26-29.png",
+                        "isDisabled": true
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "4a66da01-55f2-4f72-bf86-ecd07cbec3e3",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "92e0909f-99df-4955-b0f1-d2bcc9322eba",
+            "name": "Request password reset",
+            "url": "{{ESTATE_SHARING_LOCAL}}/user/requestPasswordReset",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-04-19T12:52:31.579Z",
+            "modified": "2023-04-20T07:19:46.339Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"hirwajeaneric25@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "88b215bf-8dd5-488a-a9c7-4e09e3cf584e",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "92e0909f-99df-4955-b0f1-d2bcc9322eba",
+            "name": "Reset password",
+            "url": "{{ESTATE_SHARING_LOCAL}}/user/resetPassword?id=6440e65b57194f11ffecf153",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-04-19T12:52:59.729Z",
+            "modified": "2023-04-20T07:37:23.849Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhpcndhamVhbmVyaWMyNUBnbWFpbC5jb20iLCJpYXQiOjE2ODE5NzYwOTEsImV4cCI6MTY4MTk3Nzg5MX0.6dvSQsTXktY1xCcJMboxA6iSeKk0Sxkyt6mUFrSxXy8"
+                }
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6440e65b57194f11ffecf153",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"password\":\"Emmanuel123!\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "37516358-9de9-4bd6-8645-5468672799c5",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "92e0909f-99df-4955-b0f1-d2bcc9322eba",
+            "name": "Update",
+            "url": "{{ESTATE_SHARING_LOCAL}}/user/update?id=644115394c883bf6162ff45a",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-04-19T12:53:26.559Z",
+            "modified": "2023-04-23T15:27:58.820Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "644115394c883bf6162ff45a",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"hirwajeric@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "eeffa89e-3c25-4f3e-afc7-39d3331665d6",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "92e0909f-99df-4955-b0f1-d2bcc9322eba",
+            "name": "Find by id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/user/findById?id=644110c436317048bbe17a7e",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-04-19T12:54:54.229Z",
+            "modified": "2023-04-22T14:21:23.018Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "644110c436317048bbe17a7e",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "cd140762-68df-42c7-9c55-a38942fb939f",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "92e0909f-99df-4955-b0f1-d2bcc9322eba",
+            "name": "Find by email",
+            "url": "{{ESTATE_SHARING_LOCAL}}/user/findByEmail?email=hirwajeaneric25@gmail.com",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-04-19T12:55:21.087Z",
+            "modified": "2023-04-20T07:39:06.163Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "email",
+                    "value": "hirwajeaneric25@gmail.com",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "8fd245f9-d870-4b8f-b187-f7290be716ff",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "92e0909f-99df-4955-b0f1-d2bcc9322eba",
+            "name": "List all",
+            "url": "{{ESTATE_SHARING_LOCAL}}/user/list",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-04-19T12:55:58.731Z",
+            "modified": "2023-04-19T12:56:09.000Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9a8f997e-7ee1-4dda-bab4-cf7784ca4366",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "92e0909f-99df-4955-b0f1-d2bcc9322eba",
+            "name": "Delete account",
+            "url": "{{ESTATE_SHARING_LOCAL}}/user/delete?id=644114e54c883bf6162ff456",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2023-04-20T07:11:16.587Z",
+            "modified": "2023-04-20T10:33:30.287Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "644114e54c883bf6162ff456",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "8a8f78f3-6f48-46f5-92c6-ed1e6133778a",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "855bfd20-e19e-4cf7-9ed6-a8b7e27d2b0c",
+            "name": "Add",
+            "url": "{{ESTATE_SHARING_LOCAL}}/estate/add",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2023-04-20T07:56:29.000Z",
+            "modified": "2023-04-22T14:00:40.195Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "number",
+                        "value": "3002"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Appartments for rent"
+                    },
+                    {
+                        "name": "rentPrice",
+                        "value": "500000"
+                    },
+                    {
+                        "name": "sharePrice",
+                        "value": "",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "estateType",
+                        "value": "Appartments"
+                    },
+                    {
+                        "name": "ownerId",
+                        "value": "644110c436317048bbe17a7e"
+                    },
+                    {
+                        "name": "location",
+                        "value": "Gisozi"
+                    },
+                    {
+                        "name": "status",
+                        "value": "For rent"
+                    },
+                    {
+                        "name": "mapCoordinates",
+                        "value": "-1.950629, 30.093980"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "pictures",
+                        "value": "/home/hirwa/Pictures/Screenshots/Screenshot from 2023-01-05 10-17-37.png"
+                    },
+                    {
+                        "name": "pictures",
+                        "value": "/home/hirwa/Pictures/Screenshots/Screenshot from 2023-01-05 10-17-12.png"
+                    },
+                    {
+                        "name": "pictures",
+                        "value": "/home/hirwa/Pictures/Screenshots/Screenshot from 2023-01-05 10-08-35.png"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "9b054ec1-606c-4293-9753-6956793af2dc",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "855bfd20-e19e-4cf7-9ed6-a8b7e27d2b0c",
+            "name": "List",
+            "url": "{{ESTATE_SHARING_LOCAL}}/estate/list",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2023-04-20T08:06:35.769Z",
+            "modified": "2023-04-20T08:06:40.437Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "45d50215-aa54-46b3-b03a-5323a461ab4e",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "855bfd20-e19e-4cf7-9ed6-a8b7e27d2b0c",
+            "name": "Find by id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/estate/findById?id=6443e94f3f8094c409ba7ff9",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2023-04-20T08:06:52.010Z",
+            "modified": "2023-04-23T15:18:36.972Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6443e94f3f8094c409ba7ff9",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "e938e93a-12a8-4cb7-9269-ddcf29556df0",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "855bfd20-e19e-4cf7-9ed6-a8b7e27d2b0c",
+            "name": "Delete",
+            "url": "{{ESTATE_SHARING_LOCAL}}/estate/delete?id=64410abafc9148bd252dde09",
+            "method": "DELETE",
+            "sortNum": 160000,
+            "created": "2023-04-20T08:15:34.512Z",
+            "modified": "2023-04-20T09:50:16.544Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "64410abafc9148bd252dde09",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "703213ac-f881-426d-87a9-f9a4d2103d21",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "855bfd20-e19e-4cf7-9ed6-a8b7e27d2b0c",
+            "name": "Find by location",
+            "url": "{{ESTATE_SHARING_LOCAL}}/estate/findByLocation?location=Kagarama",
+            "method": "GET",
+            "sortNum": 170000,
+            "created": "2023-04-20T08:18:35.820Z",
+            "modified": "2023-04-20T08:45:50.098Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "location",
+                    "value": "Kagarama",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "a806c2ac-f12c-484f-bada-e0aea07a707c",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "855bfd20-e19e-4cf7-9ed6-a8b7e27d2b0c",
+            "name": "Find by owner id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/estate/findByOwnerId?ownerId=6440e65b57194f11ffecf153",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2023-04-20T08:46:54.249Z",
+            "modified": "2023-04-20T08:47:35.846Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "ownerId",
+                    "value": "6440e65b57194f11ffecf153",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "58ff692d-e46e-4f7d-93b1-9ad106f7971c",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "855bfd20-e19e-4cf7-9ed6-a8b7e27d2b0c",
+            "name": "Find by post id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/estate/findByPostId?postId=6440e65b57194f11ffecf153",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2023-04-20T08:48:13.482Z",
+            "modified": "2023-04-20T08:48:31.945Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "postId",
+                    "value": "6440e65b57194f11ffecf153",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "52c0561e-2361-4c8c-a885-d3db7991a764",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "855bfd20-e19e-4cf7-9ed6-a8b7e27d2b0c",
+            "name": "Find by status",
+            "url": "{{ESTATE_SHARING_LOCAL}}/estate/findByStatus?status=For rent",
+            "method": "GET",
+            "sortNum": 200000,
+            "created": "2023-04-20T08:48:51.500Z",
+            "modified": "2023-04-20T08:49:32.132Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "status",
+                    "value": "For rent",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "b30cbe4c-e06b-4b4c-b298-481e977419d0",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "855bfd20-e19e-4cf7-9ed6-a8b7e27d2b0c",
+            "name": "Update",
+            "url": "{{ESTATE_SHARING_LOCAL}}/estate/update?id=6443e94f3f8094c409ba7ff9",
+            "method": "PUT",
+            "sortNum": 210000,
+            "created": "2023-04-20T09:54:13.475Z",
+            "modified": "2023-04-22T14:35:03.486Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6443e94f3f8094c409ba7ff9",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "description",
+                        "value": "Beautiful apartment",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "location",
+                        "value": "Kicukiro, Centre",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "ownerId",
+                        "value": "6440e65b57194f11ffecf153"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "pictures",
+                        "value": "/home/hirwa/Pictures/Screenshots/Screenshot from 2023-03-12 23-14-24.png",
+                        "isDisabled": true
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "69e0894b-0e5d-4d4b-925b-a7be3da257dc",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3253f560-74e5-4244-a291-3f4dd09e4518",
+            "name": "List",
+            "url": "{{ESTATE_SHARING_LOCAL}}/rentRequest/list",
+            "method": "GET",
+            "sortNum": 230000,
+            "created": "2023-04-21T06:37:18.266Z",
+            "modified": "2023-04-21T06:39:22.904Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8444ebe2-541e-484a-b0f2-ddb5920864eb",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3253f560-74e5-4244-a291-3f4dd09e4518",
+            "name": "Add",
+            "url": "{{ESTATE_SHARING_LOCAL}}/rentRequest/add",
+            "method": "POST",
+            "sortNum": 240000,
+            "created": "2023-04-21T06:37:27.011Z",
+            "modified": "2023-04-22T14:11:06.789Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"estateId\":\"6443e94f3f8094c409ba7ff9\",\n  \"requestingUserId\": \"644110c436317048bbe17a7e\",\n  \"fullName\": \"Hirwa Jean Eric\",\n  \"email\": \"hirwaminerve25@gmail.com\",\n  \"phone\": \"0780599859\",\n  \"nationalId\":\"1199880024929048\",\n  \"passportNumber\":\"00000000\",\n  \"age\": \"25\",\n  \"gender\": \"Male\",\n  \"comment\": \"I want the house.\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "fae80751-7b62-4bd7-a5aa-2a08137186f3",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3253f560-74e5-4244-a291-3f4dd09e4518",
+            "name": "Find by id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/rentRequest/findById?id=644233474222c2a31fa438c1",
+            "method": "GET",
+            "sortNum": 250000,
+            "created": "2023-04-21T06:37:42.395Z",
+            "modified": "2023-04-21T06:56:22.247Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "644233474222c2a31fa438c1",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "bb0e956b-f7d9-4449-ae6f-bb4f9003c8ac",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3253f560-74e5-4244-a291-3f4dd09e4518",
+            "name": "Update",
+            "url": "{{ESTATE_SHARING_LOCAL}}/rentRequest/update?id=6443f150a291849432b12e49",
+            "method": "PUT",
+            "sortNum": 260000,
+            "created": "2023-04-21T06:37:48.371Z",
+            "modified": "2023-04-22T14:39:04.418Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6443f150a291849432b12e49",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"status\":\"Accepted\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "43025ac2-e845-4a60-9729-24a92b9dd10f",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3253f560-74e5-4244-a291-3f4dd09e4518",
+            "name": "Delete",
+            "url": "{{ESTATE_SHARING_LOCAL}}/rentRequest/delete?id=644233474222c2a31fa438c1",
+            "method": "DELETE",
+            "sortNum": 270000,
+            "created": "2023-04-21T06:37:54.989Z",
+            "modified": "2023-04-21T06:59:45.540Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "644233474222c2a31fa438c1",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "07076455-e238-489a-8282-c4034f5a23a0",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3253f560-74e5-4244-a291-3f4dd09e4518",
+            "name": "Find by estate id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/rentRequest/findByEstateId?estateId=6440f514cc6bb0bc919dc120",
+            "method": "GET",
+            "sortNum": 290000,
+            "created": "2023-04-21T06:38:16.007Z",
+            "modified": "2023-04-21T06:56:36.087Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "estateId",
+                    "value": "6440f514cc6bb0bc919dc120",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "66f93814-92a1-438e-9a75-d84e3cf65567",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3cbb749a-4c6e-474d-aa64-5c0d66e6abdf",
+            "name": "Add",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinPost/add",
+            "method": "POST",
+            "sortNum": 300000,
+            "created": "2023-04-21T10:08:16.011Z",
+            "modified": "2023-04-23T15:20:23.553Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"estateId\": \"6443e94f3f8094c409ba7ff9\",\n  \"ownerId\": \"6440e65b57194f11ffecf153\",\n  \"postingTenantId\": \"644110c436317048bbe17a7e\",\n  \"fullName\":\"Hirwa Jean Eric\",\n  \"email\":\"hirwaminerve25@gmail.com\",\n  \"age\": \"25\",\n  \"gender\": \"Male\",\n  \"expectedGender\": \"Both\",\n  \"expectedAge\": \"23-29\",\n  \"expectedActivities\": [\"Software Development\",\"IT Support\",\"Social Media Marketing\"]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c85374d6-ad3f-4b21-a652-4e6b89385e20",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3cbb749a-4c6e-474d-aa64-5c0d66e6abdf",
+            "name": "List",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinPost/list",
+            "method": "GET",
+            "sortNum": 310000,
+            "created": "2023-04-21T10:08:57.201Z",
+            "modified": "2023-04-21T10:09:06.882Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c944dc19-9224-45ad-aea0-7348dc454453",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3cbb749a-4c6e-474d-aa64-5c0d66e6abdf",
+            "name": "Update",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinPost/update?id=6442683ac2ed41b2e5945ef5",
+            "method": "PUT",
+            "sortNum": 320000,
+            "created": "2023-04-21T10:10:17.119Z",
+            "modified": "2023-04-21T10:47:20.143Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6442683ac2ed41b2e5945ef5",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"comment\":\"In addition, I don't mind if you have a pet. But not more than one of course 😉\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "87f64eeb-0aa1-48ca-949c-079abe462bcd",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3cbb749a-4c6e-474d-aa64-5c0d66e6abdf",
+            "name": "Find by id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinPost/findById?id=6442683ac2ed41b2e5945ef5",
+            "method": "GET",
+            "sortNum": 330000,
+            "created": "2023-04-21T10:14:16.158Z",
+            "modified": "2023-04-21T10:48:24.426Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6442683ac2ed41b2e5945ef5",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "88296cfe-8eda-431a-9663-b856acd665b0",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3cbb749a-4c6e-474d-aa64-5c0d66e6abdf",
+            "name": "Find by estate Id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinPost/findByEstateId?estateId=6440f514cc6bb0bc919dc120",
+            "method": "GET",
+            "sortNum": 340000,
+            "created": "2023-04-21T10:15:20.274Z",
+            "modified": "2023-04-21T10:48:57.183Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "estateId",
+                    "value": "6440f514cc6bb0bc919dc120",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "a4b2212f-274d-4888-8bf8-17f14e5e8ead",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3cbb749a-4c6e-474d-aa64-5c0d66e6abdf",
+            "name": "Find by expected activities",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinPost/findByExpectedActivities?expectedActivity=IT",
+            "method": "GET",
+            "sortNum": 350000,
+            "created": "2023-04-21T10:16:18.259Z",
+            "modified": "2023-04-21T10:51:45.996Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "expectedActivity",
+                    "value": "IT",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "d819f834-66eb-4450-8873-300aa68e637b",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3cbb749a-4c6e-474d-aa64-5c0d66e6abdf",
+            "name": "Find by owner id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinPost/findByOwnerId?ownerId=6440e65b57194f11ffecf153",
+            "method": "GET",
+            "sortNum": 360000,
+            "created": "2023-04-21T10:17:24.281Z",
+            "modified": "2023-04-21T10:48:35.416Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "ownerId",
+                    "value": "6440e65b57194f11ffecf153",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "e8828ed1-96f8-4d22-94ff-e89e0c7a93cb",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "3cbb749a-4c6e-474d-aa64-5c0d66e6abdf",
+            "name": "Find by posting tenant id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/joinPost/findByPostingTenantId?postingTenantId=644232756436fea8d1714ac7",
+            "method": "GET",
+            "sortNum": 370000,
+            "created": "2023-04-21T10:18:12.325Z",
+            "modified": "2023-04-21T10:48:45.334Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "postingTenantId",
+                    "value": "644232756436fea8d1714ac7",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "5649cd8a-bc27-447b-8402-15af063f451b",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "adb836ba-c365-44f2-a1fb-cd026179902e",
+            "name": "List",
+            "url": "{{ESTATE_SHARING_LOCAL}}/contract/list",
+            "method": "GET",
+            "sortNum": 380000,
+            "created": "2023-04-22T14:43:24.261Z",
+            "modified": "2023-04-22T14:43:41.617Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0a784aef-1c00-43df-ac30-e79ee058b256",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "adb836ba-c365-44f2-a1fb-cd026179902e",
+            "name": "Find by id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/contract/findById?id=6443f1c7fa02b05b5a6628a0",
+            "method": "GET",
+            "sortNum": 390000,
+            "created": "2023-04-22T17:28:16.156Z",
+            "modified": "2023-04-22T17:28:38.612Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6443f1c7fa02b05b5a6628a0",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "351f6f29-b23e-43ab-83c2-9cb0505d0c29",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "adb836ba-c365-44f2-a1fb-cd026179902e",
+            "name": "Find by owner id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/contract/findByOwnerId?ownerId=6440e65b57194f11ffecf153",
+            "method": "GET",
+            "sortNum": 400000,
+            "created": "2023-04-22T17:29:23.101Z",
+            "modified": "2023-04-22T17:31:06.414Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "ownerId",
+                    "value": "6440e65b57194f11ffecf153",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "91eb80c9-cb73-4dbe-95d6-1679c0d9bc8b",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "adb836ba-c365-44f2-a1fb-cd026179902e",
+            "name": "Find by tenant id",
+            "url": "{{ESTATE_SHARING_LOCAL}}/contract/findByTenantId?tenantId=644110c436317048bbe17a7e",
+            "method": "GET",
+            "sortNum": 410000,
+            "created": "2023-04-22T17:31:36.099Z",
+            "modified": "2023-04-22T17:33:11.552Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "tenantId",
+                    "value": "644110c436317048bbe17a7e",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "ebad85d1-b533-4828-96b0-7d4ae3589cfb",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "adb836ba-c365-44f2-a1fb-cd026179902e",
+            "name": "Find by status",
+            "url": "{{ESTATE_SHARING_LOCAL}}/contract/findByStatus?status=Active",
+            "method": "GET",
+            "sortNum": 420000,
+            "created": "2023-04-22T17:34:17.019Z",
+            "modified": "2023-04-22T17:35:25.634Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "status",
+                    "value": "Active",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "2e72d904-bd3f-4e90-b687-084bb3582848",
+            "colId": "a931a111-a2d3-49f9-b814-4de38183291b",
+            "containerId": "adb836ba-c365-44f2-a1fb-cd026179902e",
+            "name": "Update",
+            "url": "{{ESTATE_SHARING_LOCAL}}/contract/update?id=6443f1c7fa02b05b5a6628a0",
+            "method": "PUT",
+            "sortNum": 430000,
+            "created": "2023-04-22T17:35:54.065Z",
+            "modified": "2023-04-24T13:55:04.994Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6443f1c7fa02b05b5a6628a0",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"tenants\": [\n    { \n      \"tenantId\": \"644110c436317048bbe17a7e\",\n      \"tenantName\": \"Hirwa Jean Eric\",\n      \"tenantEmail\": \"hirwaminerve25@gmail.com\",\n      \"allowedToRepost\": false,\n      \"signature\": \"Signed\",\n      \"signedOn\":\"1682342935945\"\n    }\n  ]\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

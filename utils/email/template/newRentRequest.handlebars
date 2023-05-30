@@ -1,0 +1,29 @@
+{{!-- <html>
+    <head>
+    </head>
+    <body style="background: whitesmoke; padding: 20px;">
+        <div>
+            <div style="color: black; width: 100%;">
+                <p>Hi {{name}},</p>    
+                <p>{{payload.name}} just sent you a rent request.</p>
+                <p>Click on the link bellow to see more details about the request</p>
+                <a href="http://localhost:5555/account/{{}}/rent-requests/{{payload.requestId}}">View more details</a>
+            </div>
+        </div>
+    </body>
+</html> --}}
+
+<html>
+    <head>
+    </head>
+    <body style="background: whitesmoke; padding: 20px;">
+        <div>
+            <div style="color: black; width: 100%;">
+                <p>Hi {{name}},</p>    
+                <p>{{requestSender}} just sent you a rent request.</p>
+                <p>Click on the link bellow to see more details about the request</p>
+                <a href="http://localhost:5555/account/{{userId}}/rent-requests/{{rentRequestId}}">View more details</a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<html>
+    <head>
+    </head>
+    <body style="background: whitesmoke; padding: 20px;">
+        <div>
+            <div style="color: black; width: 100%;">
+                <p>Hi {{name}},</p>    
+                <p>Your request to rent the house number {{payload.houseInfo.houseNumber}} located at {{payload.houseInfo.houseLocation}} was accepted.</p>
+                <p>Visit the link below to get more information and sign the rent contract.</p>
+                <a href="http://localhost:5555/account/contracts/{{payload.contractId}}">View more details</a>
+            </div>
+        </div>
+    </body>
+</html>
