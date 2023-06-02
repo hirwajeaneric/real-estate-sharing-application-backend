@@ -20,6 +20,19 @@ const propertySchema = new mongoose.Schema({
             message: '{VALUE} is not supported as a property type.'
         }
     },
+    bedRooms: {
+        type: Number, 
+        required: true,
+    },
+    bathRooms: {
+        type: Number, 
+        required: true,
+    },
+    furnished: {
+        type: Boolean,
+        required: true, 
+        default: false
+    },
     dimensions: {
         type: String, 
         required: false,
