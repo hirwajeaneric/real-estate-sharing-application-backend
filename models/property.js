@@ -13,9 +13,25 @@ const propertySchema = new mongoose.Schema({
         type: Number, 
         required: [true, 'Rent price must be provided'] 
     },
-    estateType: { 
+    propertyType: { 
         type: String, 
-        required: true 
+        enum: {
+            values: ["1 Bedroom Only","1 Bedroom + Living Room","2 Bedrooms + Living Room","3 Bedroom + Living Room","4 Bedroom + Living Room"],
+            message: '{VALUE} is not supported as a property type.'
+        }
+    },
+    bedRooms: {
+        type: Number, 
+        required: true,
+    },
+    bathRooms: {
+        type: Number, 
+        required: true,
+    },
+    furnished: {
+        type: Boolean,
+        required: true, 
+        default: false
     },
     dimensions: {
         type: String, 
@@ -55,7 +71,7 @@ const propertySchema = new mongoose.Schema({
         type: String, 
         required: true,
         enum: {
-            values: ["For Rent","Occupied","To Be Shared","For Sale"],
+            values: ["For Rent","Occupied","For Share","For Sale"],
             message: '{VALUE} is not supported as a status.'
         }
     },
