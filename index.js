@@ -16,7 +16,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 app.use(express.json());
 app.use(cors());
 
-app.use('/api/v1/', allRoutes);
+app.use('/api/v1/isma/', allRoutes);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
