@@ -58,12 +58,6 @@ UserSchema.pre('save', async function() {
     if (!this.isModified('password')) return;
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
-
-    if (this.nationality === 'Rwanda') {
-        this.passportNumber = '00000000';
-    } else if (this.nationality !== 'Rwanda') {
-        this.nationalId = '0000000000000000';
-    }
 });
 
 UserSchema.methods.createJWT = function() {

@@ -1,5 +1,5 @@
 const RentRequest = require('../models/rentRequest');
-const Property = require('../models/estate');
+const Property = require('../models/property');
 const User = require('../models/User');
 const Contract = require('../models/contract');
 
