@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const propertySchema = new mongoose.Schema({
-    number: { 
-        type: String, 
-        required: [true, 'number must be provided'] 
-    },
     description: { 
         type: String, 
         required: [true, 'description must be provided'] 
@@ -77,7 +73,8 @@ const propertySchema = new mongoose.Schema({
     },
     rating: { 
         type: Number, 
-        required: false 
+        default: 0,
+        required: true
     },
     abuseReports: [
         { 
