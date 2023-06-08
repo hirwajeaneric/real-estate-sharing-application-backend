@@ -84,12 +84,12 @@ const add = async (req, res) => {
         throw new BadRequestError(`Property with number: ${data.number} is already registered`)
     }
     const  property = await PropertyModel.create(req.body);
-    res.status(StatusCodes.CREATED).json({ message: 'Successfully added', payload:  property })
+    res.status(StatusCodes.CREATED).json({ message: 'Successfully added', property })
 };
 
 const getAll = async(req, res) => {
     const  properties = await PropertyModel.find({})
-    res.status(StatusCodes.OK).json({ nbHits:  propertys.length,  properties })
+    res.status(StatusCodes.OK).json({ nbHits:  properties.length,  properties })
 };
 
 const findById = async(req, res) => {
@@ -98,7 +98,7 @@ const findById = async(req, res) => {
     if(!property){
         throw new BadRequestError(`Property not found!`)
     }
-    res.status(StatusCodes.OK).json({  property })
+    res.status(StatusCodes.OK).json({ property })
 };
 
 const findByOwnerId = async(req, res) => {
@@ -146,7 +146,7 @@ const edit = async(req, res) => {
     const updated = await PropertyModel.findByIdAndUpdate({ _id:  propertyId }, property);
     const updatedProperty = await PropertyModel.findById(updated._id);
 
-    res.status(StatusCodes.OK).json({ message: 'Updated', payload: updatedProperty })
+    res.status(StatusCodes.OK).json({ message: 'Updated', property: updatedProperty })
 };
 
 const remove = async(req, res) => {
