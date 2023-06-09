@@ -29,7 +29,7 @@ const add = async (req, res) => {
     // Sending the email to the house owner
     await SendEmail( recipient, subject, emailBody, template );
 
-    res.status(StatusCodes.CREATED).json({ message: 'Created', payload: rentRequest });
+    res.status(StatusCodes.CREATED).json({ message: 'Created', rentRequest });
 };
 
 const getAll = async(req, res) => {
