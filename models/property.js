@@ -12,7 +12,7 @@ const propertySchema = new mongoose.Schema({
     propertyType: { 
         type: String, 
         enum: {
-            values: ["1 Bedroom Only","1 Bedroom + Living Room","2 Bedrooms + Living Room","3 Bedroom + Living Room","4 Bedroom + Living Room"],
+            values: ["1 Bedroom Only","1 Bedroom + Living Room","2 Bedrooms + Living Room","3 Bedrooms + Living Room","4 Bedrooms + Living Room"],
             message: '{VALUE} is not supported as a property type.'
         }
     },
@@ -57,7 +57,7 @@ const propertySchema = new mongoose.Schema({
         type: String, 
         required: false 
     },
-    picturers: [
+    pictures: [
         { 
             type: String, 
             required: false

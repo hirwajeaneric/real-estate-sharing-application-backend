@@ -27,69 +27,51 @@ const upload = multer({
 // Middleware for attaching files to the request body before saving.
 const attachFile = async (req, res, next) => {
     var pics = [];
-    const {query, body, files, file} = req;
+    const {query, body, files} = req;
 
     // Check if there is an  property or house already
     if (query.id) {
         const  existingProperty = await PropertyModel.findById(query.id);
         
-        if ( existingProperty &&  existingProperty.picturers.length !== 0) {
-            pics =  existingProperty.picturers;
-            if (files.length === 0 && file == 0) {
-                
-            } else if (files.length !== 0) {
-                pics =  existingProperty.picturers;
+        if ( existingProperty &&  existingProperty.pictures.length !== 0) {
+            pics =  existingProperty.pictures;
+            if (files.length !== 0) {
+                pics =  existingProperty.pictures;
                 files.forEach(file => {
                     pics.push(file.filename); 
                 });
-            } else if (files.length === 0 && file) {
-                pics =  existingProperty.picturers;
-                pics.push(file);
             }
-        } else if ( existingProperty &&  existingProperty.picturers.length === 0) {
-            if (files.length === 0 && file == 0) {
-                
-            } else if (files.length !== 0) {
-                pics =  existingProperty.picturers;
+        } else if ( existingProperty &&  existingProperty.pictures.length === 0) {
+            if (files.length !== 0) {
+                pics =  existingProperty.pictures;
                 files.forEach(file => {
                     pics.push(file.filename); 
                 });
-            } else if (files.length === 0 && file) {
-                pics =  existingProperty.picturers;
-                pics.push(file);
             }
-        } else if (! existingProperty) {
+        } else if (!existingProperty) {
             throw new BadRequestError(`Not found!`);
         }
     } else {
-        if (files.length === 0 && file == 0) {
-                    
-        } else if (files.length !== 0) {
+        if (files.length !== 0) {
             files.forEach(file => {
                 pics.push(file.filename); 
             });       
-        } else if (files.length === 0 && file) {
-            pics.push(file);
         }
     }
 
-    req.body.picturers = pics;
+    req.body.pictures = pics;
     next();
 }
 
 const add = async (req, res) => {
     const data = req.body;
-    const existing = await PropertyModel.findOne({ number: data.number });
-    if (existing) {
-        throw new BadRequestError(`Property with number: ${data.number} is already registered`)
-    }
     const  property = await PropertyModel.create(req.body);
-    res.status(StatusCodes.CREATED).json({ message: 'Successfully added', payload:  property })
+    res.status(StatusCodes.CREATED).json({ message: 'Successfully added', property })
 };
 
 const getAll = async(req, res) => {
     const  properties = await PropertyModel.find({})
-    res.status(StatusCodes.OK).json({ nbHits:  propertys.length,  properties })
+    res.status(StatusCodes.OK).json({ nbHits:  properties.length,  properties })
 };
 
 const findById = async(req, res) => {
@@ -98,7 +80,7 @@ const findById = async(req, res) => {
     if(!property){
         throw new BadRequestError(`Property not found!`)
     }
-    res.status(StatusCodes.OK).json({  property })
+    res.status(StatusCodes.OK).json({ property })
 };
 
 const findByOwnerId = async(req, res) => {
@@ -146,7 +128,7 @@ const edit = async(req, res) => {
     const updated = await PropertyModel.findByIdAndUpdate({ _id:  propertyId }, property);
     const updatedProperty = await PropertyModel.findById(updated._id);
 
-    res.status(StatusCodes.OK).json({ message: 'Updated', payload: updatedProperty })
+    res.status(StatusCodes.OK).json({ message: 'Updated', property: updatedProperty })
 };
 
 const remove = async(req, res) => {
