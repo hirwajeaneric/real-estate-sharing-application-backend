@@ -8,6 +8,10 @@ const { BadRequestError, NotFoundError } = require('../errors/index');
 const SendEmail = require('../utils/email/sendEmail');
 
 const add = async (req, res) => {
+    // Fetching designated property for the id of the owner.
+    const choosenProperty = await Property.findById(req.body.propertyId);
+    req.body.propertyOwnerId = choosenProperty.ownerId;
+
     // Creating the rent request
     const rentRequest = await RentRequest.create(req.body);
     
@@ -29,7 +33,7 @@ const add = async (req, res) => {
     // Sending the email to the house owner
     await SendEmail( recipient, subject, emailBody, template );
 
-    res.status(StatusCodes.CREATED).json({ message: 'Created', rentRequest });
+    res.status(StatusCodes.CREATED).json({ message: 'Rent request sent', rentRequest });
 };
 
 const getAll = async(req, res) => {

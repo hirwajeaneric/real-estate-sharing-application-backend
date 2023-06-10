@@ -5,6 +5,10 @@ const rentRequestSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
+    propertyOwnerId: { 
+        type: String, 
+        required: true 
+    },
     requestingUserId: { 
         type: String, 
         required: true 
