@@ -12,7 +12,7 @@ const add = async (req, res) => {
     const rentRequest = await RentRequest.create(req.body);
     
     // Finding the owner of the house
-    const house = await Property.findById(req.body.estateId);
+    const house = await Property.findById(req.body.propertyId);
     const owner = await User.findById(house.ownerId);    
 
     // Major email info
@@ -47,8 +47,8 @@ const findById = async(req, res) => {
 };
 
 const findByPropertyId = async(req, res) => {
-    const estateId = req.query.estateId;
-    const rentRequests = await RentRequest.find({ estateId: estateId });
+    const propertyId = req.query.propertyId;
+    const rentRequests = await RentRequest.find({ propertyId: propertyId });
     if (!rentRequests) {
         throw new BadRequestError(`Rent request not found for this owner.`);
     }
@@ -75,16 +75,16 @@ const edit = async(req, res) => {
         var request = await RentRequest.findByIdAndUpdate({ _id: req.query.id}, req.body);
         var updatedRentRequest = await RentRequest.findById(request._id);
     
-        // Find estate information
-        var estate = await Property.findById(updatedRentRequest.estateId);
+        // Find property information
+        var property = await Property.findById(updatedRentRequest.propertyId);
         
         let ownerIdentificationNumber = '';
         let tenantIdentificationNumber = '';
         let emailPayload = {};
         let handleBars = "";
 
-        // Find info about estate owner
-        var owner = await User.findById(estate.ownerId);
+        // Find info about property owner
+        var owner = await User.findById(property.ownerId);
         
         if (owner.nationalId !== "0000000000000000" && owner.passportNumber === "00000000") {
             ownerIdentificationNumber = owner.nationalId;
@@ -107,9 +107,9 @@ const edit = async(req, res) => {
         if (status === 'Accepted') {
             // Create a contract
             const contract = await Contract.create({
-                estateId: updatedRentRequest.estateId,
-                estateNumber: estate.number,
-                ownerId: estate.ownerId,
+                propertyId: updatedRentRequest.propertyId,
+                propertyNumber: property.number,
+                ownerId: property.ownerId,
                 ownerName: owner.fullName,
                 ownerEmail: owner.email,
                 tenants: [
@@ -121,34 +121,34 @@ const edit = async(req, res) => {
                         allowedToRepost: updatedRentRequest.allowedToShare
                     }
                 ],
-                totalPayment: estate.rentPrice,
-                paymentPerTenant: estate.rentPrice,
+                totalPayment: property.rentPrice,
+                paymentPerTenant: property.rentPrice,
             });
 
             emailPayload = {
                 houseInfo: {
-                    houseNumber: estate.number,
-                    houseLocation: estate.location,
+                    houseNumber: property.number,
+                    houseLocation: property.location,
                 },
                 contractId: contract._id
             };
             handleBars = "./template/acceptedRequest.handlebars";
 
-            // Add tenant to the list of other tenants of an estate
-            let listOfTenants = estate.tenants;
+            // Add tenant to the list of other tenants of an property
+            let listOfTenants = property.tenants;
             listOfTenants.push({ 
                 id: updatedRentRequest.requestingUserId, 
                 fullName: updatedRentRequest.fullName
             })
             
-            await Property.findByIdAndUpdate(estate._id, { tenants : listOfTenants})
+            await Property.findByIdAndUpdate(property._id, { tenants : listOfTenants})
 
 
         } else {
             emailPayload = {
                 houseInfo: {
-                    houseNumber: estate.number,
-                    houseLocation: estate.location,
+                    houseNumber: property.number,
+                    houseLocation: property.location,
                 },
                 response: updatedRentRequest.response
             };
