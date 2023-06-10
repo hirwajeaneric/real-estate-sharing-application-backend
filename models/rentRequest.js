@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 const rentRequestSchema = new mongoose.Schema({
-    estateId: { 
+    propertyId: { 
+        type: String, 
+        required: true 
+    },
+    propertyOwnerId: { 
         type: String, 
         required: true 
     },
@@ -24,11 +28,11 @@ const rentRequestSchema = new mongoose.Schema({
     },
     nationalId: {
         type: String,
-        required: true,
+        required: false,
     },
     passportNumber: {
         type: String, 
-        required: true
+        required: false
     },
     phone: { 
         type: String, 
