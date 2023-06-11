@@ -41,7 +41,7 @@ const rentRequestSchema = new mongoose.Schema({
         minlength: 10,
     },
     age: { 
-        type: String, 
+        type: Number, 
         required: false 
     },
     activityType: { 
@@ -57,9 +57,13 @@ const rentRequestSchema = new mongoose.Schema({
         required: false 
     },
     mightNeedToShare: { 
-        type: Boolean, 
-        required: false,
-        default: false 
+        type: String, 
+        required: true,
+        enum: {
+            values: ["Yes", "No", "Don't know yet"],
+            message: '{VALUE} is not supported as a choice.',
+        },
+        default: "Don't know yet" 
     },
     allowedToShare: { 
         type: Boolean, 
