@@ -12,12 +12,8 @@ const add = async (req, res) => {
     const choosenProperty = await Property.findById(req.body.propertyId);
     req.body.propertyOwnerId = choosenProperty.ownerId;
 
-    console.log(req.body);
-
     // Creating the rent request
     const rentRequest = await RentRequest.create(req.body);
-    
-    console.log(rentRequest);
 
     // Finding the owner of the house
     const house = await Property.findById(req.body.propertyId);
