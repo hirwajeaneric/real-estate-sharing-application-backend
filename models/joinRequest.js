@@ -5,6 +5,10 @@ const JoinRequestSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
+    propertyOwnerId: { 
+        type: String, 
+        required: true 
+    },
     joinPost: { 
         type: String, 
         required: true 

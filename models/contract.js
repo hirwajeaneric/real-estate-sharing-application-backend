@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 
 const contractSchema = new mongoose.Schema({
-    estateId: { 
-        type: String, 
-        required: true 
-    },
-    estateNumber: { 
+    propertyId: { 
         type: String, 
         required: true 
     },
@@ -57,9 +53,9 @@ const contractSchema = new mongoose.Schema({
                 required: true
             },
             allowedToRepost: {
-                type: Boolean,
+                type: String,
                 required: true,
-                default: false
+                default: "Yes"
             },
             signature: { 
                 type: String, 
