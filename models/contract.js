@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const contractSchema = new mongoose.Schema({
-    estateId: { 
+    propertyId: { 
         type: String, 
         required: true 
     },
-    estateNumber: { 
+    propertyNumber: { 
         type: String, 
         required: true 
     },

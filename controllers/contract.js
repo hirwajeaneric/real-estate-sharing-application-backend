@@ -6,7 +6,7 @@ const { emailTemplates, setEmailSamples } = require('../utils/email/emailContent
 
 const add = async (req, res) => {
     const contract = await Contract.create(req.body);
-    res.status(StatusCodes.CREATED).json({ message: 'Contract created', payload: contract })
+    res.status(StatusCodes.CREATED).json({ message: 'Contract created', contract })
 };
 
 const getAll = async(req, res) => {

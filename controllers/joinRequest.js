@@ -25,7 +25,7 @@ const add = async (req, res) => {
     
     await sendEmail( recipient, subject, emailBody, template );
 
-    res.status(StatusCodes.CREATED).json({ message: 'Created', payload: joinRequest })
+    res.status(StatusCodes.CREATED).json({ message: 'Created', joinRequest })
 };
 
 const getAll = async(req, res) => {
@@ -43,8 +43,8 @@ const findById = async(req, res) => {
 };
 
 const findByPropertyId = async(req, res) => {
-    const estateId = req.query.estateId;
-    const joinRequests = await JoinRequest.find({ estateId: estateId });
+    const propertyId = req.query.propertyId;
+    const joinRequests = await JoinRequest.find({ propertyId: propertyId });
     if (!joinRequests) {
         throw new BadRequestError(`JoinRequest not found for this owner.`);
     }
@@ -86,7 +86,7 @@ const edit = async(req, res) => {
     // UPDATING THE CONTRACT
     if (joinRequestBefore.status === 'Pending' || joinRequestBefore.status === 'Rejected' && updatedJoinRequest.status === 'Accepted' ) {
         // Fetching the contract that corresponds to this specific property, owner, and posting tenant.
-        const property = await Property.findById(updatedJoinRequest.estateId);
+        const property = await Property.findById(updatedJoinRequest.propertyId);
         const allContracts = await Contract.find({});
         
         var existingContract = {};
@@ -94,7 +94,7 @@ const edit = async(req, res) => {
             if (contract.ownerId === property.ownerId) existingContract = contract
         });
 
-        if ( property.ownerId === existingContract.ownerId  && property._id.toString() === existingContract.estateId  && property.number === existingContract.estateNumber && existingContract.status === 'Pending' && updatedJoinRequest.status === 'Accepted') {
+        if ( property.ownerId === existingContract.ownerId  && property._id.toString() === existingContract.propertyId  && property.number === existingContract.propertyNumber && existingContract.status === 'Pending' && updatedJoinRequest.status === 'Accepted') {
             existingTenantList = existingContract.tenants;
 
             // Checking if the following tenant isn't already in the contract.
