@@ -112,7 +112,6 @@ const edit = async(req, res) => {
             // Create a contract
             const contract = await Contract.create({
                 propertyId: updatedRentRequest.propertyId,
-                propertyNumber: property.number,
                 ownerId: property.ownerId,
                 ownerName: owner.fullName,
                 ownerEmail: owner.email,
@@ -131,7 +130,7 @@ const edit = async(req, res) => {
 
             emailPayload = {
                 houseInfo: {
-                    houseNumber: property.number,
+                    houseNumber: property.propertyId,
                     houseLocation: property.location,
                 },
                 contractId: contract._id
@@ -151,7 +150,7 @@ const edit = async(req, res) => {
         } else {
             emailPayload = {
                 houseInfo: {
-                    houseNumber: property.number,
+                    houseNumber: property.propertyId,
                     houseLocation: property.location,
                 },
                 response: updatedRentRequest.response
@@ -178,7 +177,7 @@ const edit = async(req, res) => {
         throw new NotFoundError(`Request not found!`);
     }
 
-    res.status(StatusCodes.OK).json({ message: 'Rent request updated', payload: updatedRentRequest})
+    res.status(StatusCodes.OK).json({ message: 'Rent request updated', rentRequest: updatedRentRequest})
 };
 
 module.exports = { add, getAll, edit, findByPropertyId, findById, remove }

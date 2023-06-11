@@ -5,10 +5,6 @@ const contractSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
-    propertyNumber: { 
-        type: String, 
-        required: true 
-    },
     ownerId: { 
         type: String, 
         required: true 
@@ -57,9 +53,9 @@ const contractSchema = new mongoose.Schema({
                 required: true
             },
             allowedToRepost: {
-                type: Boolean,
+                type: String,
                 required: true,
-                default: false
+                default: "Yes"
             },
             signature: { 
                 type: String, 

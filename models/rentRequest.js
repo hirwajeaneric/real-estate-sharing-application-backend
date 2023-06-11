@@ -66,9 +66,13 @@ const rentRequestSchema = new mongoose.Schema({
         default: "Don't know yet" 
     },
     allowedToShare: { 
-        type: Boolean, 
-        required: false,
-        default: false 
+        type: String, 
+        required: true,
+        enum: {
+            values: ["Yes", "No"],
+            message: '{VALUE} is not supported as a permission to repost.',
+        },
+        default: "No"
     },
     comment: { 
         type: String, 
