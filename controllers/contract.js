@@ -73,6 +73,7 @@ const remove = async(req, res) => {
 
 const edit = async(req, res) => {
     const contract = req.body;
+    console.log(contract);
     const contractId = req.query.id;
     var updatedContract = {};
 
