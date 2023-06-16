@@ -3,6 +3,7 @@ const { StatusCodes } = require('http-status-codes');
 const { BadRequestError, NotFoundError } = require('../errors/index');
 const sendEmail = require('../utils/email/sendEmail');
 const { emailTemplates, setEmailSamples } = require('../utils/email/emailContentSamples');
+const property = require('../models/property');
 
 const add = async (req, res) => {
     const contract = await Contract.create(req.body);
@@ -86,6 +87,15 @@ const edit = async(req, res) => {
             updatedContract = await Contract.findById(updated._id);
         } else {
             let listOfTenants = existingContract.tenants;
+            
+            // Setting up tenant information that will be attached to the property list of tenants
+            var tenantInfo = {};
+            if (contract.tenants[0].signature === 'Signed') {
+                tenantInfo = {
+                    id: contract.tenants[0].tenantId,
+                    fullName: contract.tenants[0].tenantName
+                }
+            }
 
             listOfTenants.forEach(tenant => {
                 if (tenant.tenantId === req.body.tenants[0].tenantId || tenant.tenantName === req.body.tenants[0].tenantName) {
@@ -95,12 +105,30 @@ const edit = async(req, res) => {
                     tenant.signature = req.body.tenants[0].signature;
                     tenant.signedOn = req.body.tenants[0].signedOn;
                 }
-            })
+            });
 
             const updated = await Contract.findByIdAndUpdate({ _id: contractId}, existingContract);
             updatedContract = await Contract.findById(updated._id);
+
+            // Updating a property according to signature. 
+            var existingProperty = await property.findById(updatedContract.propertyId);
+            var tenants = [];
+            const newProperty = {};
+            var updatedTenants = [];    
+
+            if (contract.tenants[0].signature === 'Signed') {
+                if (existingProperty.tenants.length === 0) { 
+                    tenants = [tenantInfo];
+                } else if (existingProperty.tenants.length !== 0) { 
+                    tenants.concat(tenantInfo);
+                } 
+                newProperty = await property.findByIdAndUpdate(existingProperty._id, { tenants: tenants });
+            } else if (contract.tenants[0].signature === 'Withdrew') {
+                existingTenants = existingProperty.tenants;
+                updatedTenants = existingTenants.filter((tenant) => tenant.id !== contract.tenants[0].tenantId); 
+                newProperty = await property.findByIdAndUpdate(existingProperty._id, { tenants: updatedTenants });
+            }
         }
-        
     } else {
         // Updating the contract if there are no heavy conditions
         const updated = await Contract.findByIdAndUpdate({ _id: contractId}, req.body );
