@@ -124,8 +124,6 @@ const findByPostId = async(req, res) => {
 const edit = async(req, res) => {
     const  property = req.body;
     const  propertyId = req.query.id;
-
-    console.log(property);
     
     const updated = await PropertyModel.findByIdAndUpdate({ _id:  propertyId }, property);
     const updatedProperty = await PropertyModel.findById(updated._id);
