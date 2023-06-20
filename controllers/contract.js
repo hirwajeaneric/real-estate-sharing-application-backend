@@ -80,59 +80,74 @@ const edit = async(req, res) => {
     if (req.body.tenants) {
         // Fetch the already existing contract.
         var existingContract = await Contract.findById(req.query.id);
+
         // Let's check if there is no other tenant in the contract already
-        if (!existingContract.tenants || existingContract.tenants.length === 0 ) {
-            // Updating the contract if there are no heavy conditions
-            const updated = await Contract.findByIdAndUpdate({ _id: contractId}, req.body );
-            updatedContract = await Contract.findById(updated._id);
-        } else {
-            let listOfTenants = existingContract.tenants;
-            
-            // Setting up tenant information that will be attached to the property list of tenants
-            var tenantInfo = {};
-            if (contract.tenants[0].signature === 'Signed') {
-                tenantInfo = {
-                    id: contract.tenants[0].tenantId,
-                    fullName: contract.tenants[0].tenantName
-                }
+        let listOfTenants = existingContract.tenants;
+        
+        // Setting up tenant information that will be attached to the property list of tenants
+        var tenantInfo = {};
+        if (contract.tenants[0].signature === 'Signed') {
+            tenantInfo = {
+                id: contract.tenants[0].tenantId,
+                fullName: contract.tenants[0].tenantName
             }
+        }
 
-            listOfTenants.forEach(tenant => {
-                if (tenant.tenantId === req.body.tenants[0].tenantId || tenant.tenantName === req.body.tenants[0].tenantName) {
-                    tenant.tenantId = req.body.tenants[0].tenantId;
-                    tenant.tenantName = req.body.tenants[0].tenantName;
-                    tenant.tenantEmail = req.body.tenants[0].tenantEmail;
-                    tenant.signature = req.body.tenants[0].signature;
-                    tenant.signedOn = req.body.tenants[0].signedOn;
-                }
-            });
+        listOfTenants.forEach(tenant => {
+            if (tenant.tenantId === req.body.tenants[0].tenantId || tenant.tenantName === req.body.tenants[0].tenantName) {
+                tenant.tenantId = req.body.tenants[0].tenantId;
+                tenant.tenantName = req.body.tenants[0].tenantName;
+                tenant.tenantEmail = req.body.tenants[0].tenantEmail;
+                tenant.signature = req.body.tenants[0].signature;
+                tenant.signedOn = req.body.tenants[0].signedOn;
+            }
+        });
 
-            const updated = await Contract.findByIdAndUpdate({ _id: contractId}, existingContract);
-            updatedContract = await Contract.findById(updated._id);
+        const updated = await Contract.findByIdAndUpdate({ _id: contractId}, existingContract);
+        updatedContract = await Contract.findById(updated._id);
 
-            // Updating a property according to signature. 
-            var existingProperty = await property.findById(updatedContract.propertyId);
-            var tenants = [];
-            const newProperty = {};
-            var updatedTenants = [];    
+        // Updating a property according to signature. 
+        var existingProperty = await property.findById(updatedContract.propertyId);
+        var tenants = [];
+        const newProperty = {};
+        var updatedTenants = [];    
 
-            if (contract.tenants[0].signature === 'Signed') {
-                if (existingProperty.tenants.length === 0) { 
-                    tenants = [tenantInfo];
-                } else if (existingProperty.tenants.length !== 0) { 
-                    tenants.concat(tenantInfo);
-                } 
-                newProperty = await property.findByIdAndUpdate(existingProperty._id, { tenants: tenants });
-            } else if (contract.tenants[0].signature === 'Withdrew') {
+        if (contract.tenants[0].signature === 'Signed') {
+            if (existingProperty.tenants.length === 0) { 
+                tenants = [tenantInfo];
+            } else if (existingProperty.tenants.length !== 0) { 
+                tenants.concat(tenantInfo);
+            } 
+            newProperty = await property.findByIdAndUpdate(existingProperty._id, { tenants: tenants, status: 'For Join' });
+        } else if (contract.tenants[0].signature === 'Withdrew') {
+            if (updatedContract.ownerSignature === 'Signed') {
                 existingTenants = existingProperty.tenants;
                 updatedTenants = existingTenants.filter((tenant) => tenant.id !== contract.tenants[0].tenantId); 
                 newProperty = await property.findByIdAndUpdate(existingProperty._id, { tenants: updatedTenants });
+            } else if (updatedContract.ownerSignature === 'Withdrew') {
+                existingTenants = existingProperty.tenants;
+                updatedTenants = existingTenants.filter((tenant) => tenant.id !== contract.tenants[0].tenantId); 
+                newProperty = await property.findByIdAndUpdate(existingProperty._id, { tenants: updatedTenants, status: 'For Rent' });
             }
         }
     } else {
         // Updating the contract if there are no heavy conditions
+        req.body.status = 'Active';
         const updated = await Contract.findByIdAndUpdate({ _id: contractId}, req.body );
         updatedContract = await Contract.findById(updated._id);
+        
+        // Updating a property according to signature. 
+        var existingProperty = await property.findById(updatedContract.propertyId);
+        const newProperty = {};
+
+        if (contract.ownerSignature === 'Signed') { 
+            newProperty = await property.findByIdAndUpdate(existingProperty._id, { status: 'Occupied' });
+        } else if (contract.tenants[0].signature === 'Withdrew') {
+            existingTenants = existingProperty.tenants;
+            updatedTenants = existingTenants.filter((tenant) => tenant.id !== contract.tenants[0].tenantId); 
+            newProperty = await property.findByIdAndUpdate(existingProperty._id, { tenants: updatedTenants, status: 'For Rent' });
+        }
+
     }
 
     /**
