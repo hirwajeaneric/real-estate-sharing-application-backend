@@ -22,13 +22,13 @@ const add = async (req, res) => {
                 acceptedToRepost = false;
             }
         })
-    })
+    });
 
     if (acceptedToRepost) {
         const joinPost = await JoinPost.create(req.body);
 
         // CHANGE PROPERTY STATUS
-        const updatedProperty = await Property.findByIdAndUpdate({id: joinPost.propertyId}, { status: 'For Join' });
+        const updatedProperty = await Property.findByIdAndUpdate(joinPost.propertyId, { status: 'For Join' });
         if (updatedProperty) {
             res.status(StatusCodes.CREATED).json({ message: 'Created', payload: joinPost })
         }
