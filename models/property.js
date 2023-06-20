@@ -3,14 +3,15 @@ const mongoose = require('mongoose');
 const propertySchema = new mongoose.Schema({
     description: { 
         type: String, 
-        required: [true, 'description must be provided'] 
+        required: [true, 'Description must be provided'] 
     },
     rentPrice: { 
         type: Number, 
         required: [true, 'Rent price must be provided'] 
     },
     propertyType: { 
-        type: String, 
+        type: String,
+        required: false, 
         enum: {
             values: ["1 Bedroom Only","1 Bedroom + Living Room","2 Bedrooms + Living Room","3 Bedrooms + Living Room","4 Bedrooms + Living Room"],
             message: '{VALUE} is not supported as a property type.'
@@ -18,15 +19,15 @@ const propertySchema = new mongoose.Schema({
     },
     bedRooms: {
         type: Number, 
-        required: true,
+        required: false,
     },
     bathRooms: {
         type: Number, 
-        required: true,
+        required: false,
     },
     furnished: {
         type: Boolean,
-        required: true, 
+        required: false, 
         default: false
     },
     dimensions: {
@@ -55,7 +56,7 @@ const propertySchema = new mongoose.Schema({
     },
     mapCoordinates: { 
         type: String, 
-        required: false 
+        required: true, 
     },
     pictures: [
         { 
