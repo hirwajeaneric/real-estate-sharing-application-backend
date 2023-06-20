@@ -67,7 +67,7 @@ const propertySchema = new mongoose.Schema({
         type: String, 
         required: true,
         enum: {
-            values: ["For Rent","Occupied","For Share","For Sale"],
+            values: ["For Rent","Occupied","For Join","For Sale"],
             message: '{VALUE} is not supported as a status.'
         }
     },
