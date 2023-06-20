@@ -1,13 +1,15 @@
 const JoinPost = require('../models/joinPost');
+const Contract = require('../models/contract');
+const Property = require('../models/property');
 const { StatusCodes } = require('http-status-codes');
 const { BadRequestError, NotFoundError } = require('../errors/index');
-const Contract = require('../models/contract');
 
 const add = async (req, res) => {
     const newJoinPost = req.body;
     let acceptedToRepost = false;
 
     const allContracts = await Contract.find({});
+
     allContracts.forEach(contract => {
         contract.tenants.forEach(tenant => {
             if (tenant.tenantId === newJoinPost.postingTenantId || 
@@ -24,7 +26,12 @@ const add = async (req, res) => {
 
     if (acceptedToRepost) {
         const joinPost = await JoinPost.create(req.body);
-        res.status(StatusCodes.CREATED).json({ message: 'Created', payload: joinPost })
+
+        // CHANGE PROPERTY STATUS
+        const updatedProperty = await Property.findByIdAndUpdate({id: joinPost.propertyId}, { status: 'For Join' });
+        if (updatedProperty) {
+            res.status(StatusCodes.CREATED).json({ message: 'Created', payload: joinPost })
+        }
     } else {
         throw new BadRequestError(`Failed to post the house since sharing the rent price with other people was not part of the contract. If you want to change the contract terms, please contact your landlord ang ask for the permission to repost the house.`)
     }

@@ -114,11 +114,11 @@ const edit = async(req, res) => {
 
         if (contract.tenants[0].signature === 'Signed') {
             if (existingProperty.tenants.length === 0) { 
-                tenants = [tenantInfo];
+                tenants.push(tenantInfo);
             } else if (existingProperty.tenants.length !== 0) { 
-                tenants.concat(tenantInfo);
+                tenants.push(tenantInfo);
             } 
-            newProperty = await property.findByIdAndUpdate(existingProperty._id, { tenants: tenants, status: 'For Join' });
+            newProperty = await property.findByIdAndUpdate(existingProperty._id, { tenants: tenants, status: 'Occupied' });
         } else if (contract.tenants[0].signature === 'Withdrew') {
             if (updatedContract.ownerSignature === 'Signed') {
                 existingTenants = existingProperty.tenants;
