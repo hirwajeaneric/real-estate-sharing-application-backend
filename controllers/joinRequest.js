@@ -19,7 +19,8 @@ const add = async (req, res) => {
         name: joinPost.fullName, 
         requestSender: joinRequest.fullName, 
         userId: joinPost.postingTenantId, 
-        joinRequestId: joinRequest._id 
+        joinRequestId: joinRequest._id, 
+        user: joinPost.fullName.split(' ').join(''),
     };
     let template = './template/newJoinRequest.handlebars';
     
@@ -125,6 +126,7 @@ const edit = async(req, res) => {
                 recipientName: updatedJoinRequest.fullName,
                 recipientId: updatedJoinRequest.requestingUserId,
                 contractId: updatedContract._id,
+                user: updatedJoinRequest.fullName.split(' ').join(''),
                 body: `Your request to join and rent property number ${property.number} was accepted. \nClick on the link bellow to see more details and sign the contract.`
             }
             let template = "./template/general.handlebars";
