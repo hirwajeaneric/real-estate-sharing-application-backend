@@ -53,8 +53,8 @@ const findById = async(req, res) => {
 
 const findByPropertyId = async(req, res) => {
     const propertyId = req.query.propertyId;
-    const joinPosts = await JoinPost.find({ propertyId: propertyId });
-    res.status(StatusCodes.OK).json({ joinPosts });
+    const joinPost = await JoinPost.findOne({ propertyId: propertyId });
+    res.status(StatusCodes.OK).json({ joinPost });
 };
 
 const findByExpectedActivities = async(req, res) => {
