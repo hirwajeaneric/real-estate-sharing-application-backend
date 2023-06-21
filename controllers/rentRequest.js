@@ -1,7 +1,7 @@
 const RentRequest = require('../models/rentRequest');
 const Property = require('../models/property');
 const User = require('../models/User');
-const Contract = require('../models/contract');HOST, LINK, PROTOCOL, PORT
+const Contract = require('../models/contract');
 
 const { StatusCodes } = require('http-status-codes');
 const { BadRequestError, NotFoundError } = require('../errors/index');
