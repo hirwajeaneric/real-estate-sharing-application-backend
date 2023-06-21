@@ -7,7 +7,7 @@
                 <p>Hi {{name}},</p>    
                 <p>Your request to rent the house number {{payload.houseInfo.houseNumber}} located at {{payload.houseInfo.houseLocation}} was accepted.</p>
                 <p>Visit the link below to get more information and sign the rent contract.</p>
-                <a href="http://localhost:5555/account/contracts/{{payload.contractId}}">View more details</a>
+                <a href="http://localhost:5555/user/"+{{user}}+"/contract/"+{{payload.contractId}}+"">View more details</a>
             </div>
         </div>
     </body>
