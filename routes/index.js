@@ -7,10 +7,12 @@ const property = require('./property');
 const joinPost = require('./joinPost');
 const rentRequest = require('./rentRequest');
 const joinRequest = require('./joinRequest');
+const emailRoutes = require('./email');
 
 router.use('/profile', express.static('./profiles'));
 router.use('/property', express.static('./properties'));
 
+router.use('/email', emailRoutes);
 router.use('/user', user);
 router.use('/contract', contract);
 router.use('/property', property);

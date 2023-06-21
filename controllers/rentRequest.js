@@ -26,7 +26,8 @@ const add = async (req, res) => {
         name: owner.fullName,
         requestSender: rentRequest.fullName,
         userId: owner._id,
-        rentRequestId: rentRequest._id
+        rentRequestId: rentRequest._id,
+        user: owner.fullName.split(' ').join('')
     }  
     let template = "./template/newRentRequest.handlebars";
 
@@ -133,6 +134,7 @@ const edit = async(req, res) => {
                     houseNumber: property.propertyId,
                     houseLocation: property.location,
                 },
+                user: updatedRentRequest.fullName.split(' ').join(''),
                 contractId: contract._id
             };
             handleBars = "./template/acceptedRequest.handlebars";
@@ -153,6 +155,7 @@ const edit = async(req, res) => {
                     houseNumber: property.propertyId,
                     houseLocation: property.location,
                 },
+                user: updatedRentRequest.fullName.split(' ').join(''),
                 response: updatedRentRequest.response
             };
             handleBars = "./template/rejectedRequest.handlebars";
