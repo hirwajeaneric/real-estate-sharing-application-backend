@@ -89,7 +89,8 @@ const edit = async(req, res) => {
         if (contract.tenants[0].signature === 'Signed') {
             tenantInfo = {
                 id: contract.tenants[0].tenantId,
-                fullName: contract.tenants[0].tenantName
+                fullName: contract.tenants[0].tenantName,
+                email: contract.tenants[0].tenantEmail
             }
         }
 

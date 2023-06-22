@@ -38,6 +38,14 @@ const propertySchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
+    ownerName: { 
+        type: String, 
+        required: true 
+    },
+    ownerPhone: { 
+        type: String, 
+        required: true 
+    },
     tenants: [
         {
             id: { 
@@ -48,6 +56,10 @@ const propertySchema = new mongoose.Schema({
                 type: String, 
                 required: false 
             },
+            email: {
+                type: String, 
+                required: false
+            }
         }
     ],
     location: { 
