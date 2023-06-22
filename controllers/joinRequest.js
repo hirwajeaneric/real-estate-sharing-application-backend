@@ -92,23 +92,21 @@ const edit = async(req, res) => {
         
         var existingContract = {};
         allContracts.forEach(contract => {
-            if (contract.ownerId === property.ownerId) existingContract = contract
+            if (contract.ownerId === property.ownerId) { existingContract = contract }
         });
 
-        if ( property.ownerId === existingContract.ownerId  && property._id.toString() === existingContract.propertyId  && property.number === existingContract.propertyNumber && existingContract.status === 'Pending' && updatedJoinRequest.status === 'Accepted') {
+        if ( property.ownerId === existingContract.ownerId  && property._id.toString() === existingContract.propertyId && updatedJoinRequest.status === 'Accepted') {
             existingTenantList = existingContract.tenants;
 
             // Checking if the following tenant isn't already in the contract.
             existingTenantList.forEach(tenant => {
-                if (tenant.tenantId !== updatedJoinRequest.requestingUserId && tenant.tenantEmail !== updatedJoinRequest.email) {
-                    existingTenantList.push({
-                        tenantId: updatedJoinRequest.requestingUserId,
-                        tenantName: updatedJoinRequest.fullName,
-                        tenantEmail: updatedJoinRequest.email,
-                        tenantPhone: updatedJoinRequest.phone,
-                    });
-                    existingContract.tenants = existingTenantList;                    
-                }
+                existingTenantList.push({
+                    tenantId: updatedJoinRequest.requestingUserId,
+                    tenantName: updatedJoinRequest.fullName,
+                    tenantEmail: updatedJoinRequest.email,
+                    tenantPhone: updatedJoinRequest.phone,
+                });
+                existingContract.tenants = existingTenantList;
             });
 
             const updated = await Contract.findByIdAndUpdate(existingContract._id, existingContract);
