@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const JoinRequestSchema = new mongoose.Schema({
-    estateId: { 
+    propertyId: { 
         type: String, 
         required: true 
     },
