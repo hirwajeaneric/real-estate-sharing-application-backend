@@ -35,7 +35,7 @@ const signIn = async (req, res) => {
             nationality: user.nationality,
             nationalId: user.nationalId,
             passportNumber: user.passportNumber,
-            profilePicturer: user.profilePicture,
+            profilePicture: user.profilePicture,
             token: token,
         }
     })
@@ -67,7 +67,7 @@ const signUp = async (req, res) => {
             nationality: user.nationality,
             nationalId: user.nationalId,
             passportNumber: user.passportNumber,
-            profilePicturer: user.profilePicture,
+            profilePicture: user.profilePicture,
             token: token,
         }
     })
@@ -146,7 +146,7 @@ const updateUser = async(req, res, next) => {
             nationality: updatedUser.nationality,
             nationalId: updatedUser.nationalId,
             passportNumber: updatedUser.passportNumber,
-            profilePicturer: updatedUser.profilePicture,
+            profilePicture: updatedUser.profilePicture,
             token: token,
         }
     })
