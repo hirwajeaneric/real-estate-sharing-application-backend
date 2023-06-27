@@ -24,7 +24,7 @@ const joinPropertyPostSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: true,
-        maxLength: 10,
+        maxLength: 12,
         minLength: 10
     },
     age: { 
