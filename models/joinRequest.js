@@ -9,6 +9,10 @@ const JoinRequestSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
+    postingTenantId: { 
+        type: String, 
+        required: true 
+    },
     joinPost: { 
         type: String, 
         required: true 
