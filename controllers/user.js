@@ -163,7 +163,8 @@ const requestPasswordReset = async(req, res, next) => {
     
     let clientDomain = 'localhost';
 
-    let link = `http://${clientDomain || localhost}:5555/reset-password/${token}/${registeredUser._id}`;
+    // let link = `http://${clientDomain || localhost}:5555/reset-password/${token}/${registeredUser._id}`;
+    let link = `https://real-estate-sharing-server.onrender.com/reset-password/${token}/${registeredUser._id}`;
 
     await sendEmail(
         registeredUser.email,
