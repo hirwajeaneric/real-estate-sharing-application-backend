@@ -131,6 +131,24 @@ const edit = async(req, res) => {
     res.status(StatusCodes.OK).json({ message: 'Updated', property: updatedProperty })
 };
 
+function fetchLatestUploadedProperty(properties) {
+    const latestProperty = properties.reduce((latest, property) => {
+      return new Date(property.lastUpdated) > new Date(latest.lastUpdated) ? property : latest;
+    });
+
+    return latestProperty;
+};
+
+const editLatest = async(req, res) => {
+    const  { ownerId, status } = req.body;
+
+    const userProperties = await PropertyModel.find({ ownerId: ownerId });
+    const latestPostedProperty = fetchLatestUploadedProperty(userProperties);
+    await PropertyModel.findByIdAndUpdate({ _id: latestPostedProperty._id }, { status: status });
+
+    res.status(StatusCodes.OK).json({ message: 'Updated' });
+};
+
 const remove = async(req, res) => {
     const propertyId = req.query.id;
     const deletedProperty = await PropertyModel.findByIdAndRemove({ _id: propertyId});
@@ -142,4 +160,4 @@ const remove = async(req, res) => {
     res.status(StatusCodes.OK).json({ message: 'Deleted'})
 };
 
-module.exports = { add, getAll, findById, findByStatus, findByLocation, findByOwnerId, findByMapCoordinates, findByPostId, edit, upload, attachFile, remove }
+module.exports = { add, getAll, findById, findByStatus, findByLocation, findByOwnerId, findByMapCoordinates, findByPostId, edit, editLatest, upload, attachFile, remove }
