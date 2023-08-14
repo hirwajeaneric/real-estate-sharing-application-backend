@@ -13,7 +13,17 @@ const propertySchema = new mongoose.Schema({
         type: String,
         required: false, 
         enum: {
-            values: ["1 Bedroom only","1 Bedroom + Living Room","2 Bedrooms + Living Room","3 Bedrooms + Living Room","4 Bedrooms + Living Room"],
+            values: [
+                "1 Bedroom only",
+                "1 Bedroom + Living Room",
+                "2 Bedrooms + Living Room",
+                "3 Bedrooms + Living Room",
+                "4 Bedrooms + Living Room",
+                "5 Bedrooms + Living Room",
+                "6 Bedrooms + Living Room",
+                "7 Bedrooms + Living Room",
+                "Other"
+            ],
             message: '{VALUE} is not supported as a property type.'
         }
     },
@@ -80,7 +90,7 @@ const propertySchema = new mongoose.Schema({
         type: String, 
         required: true,
         enum: {
-            values: ["For Rent","Occupied","For Join","For Sale"],
+            values: ["For Rent","Occupied","For Join","For Sale","Unpaid"],
             message: '{VALUE} is not supported as a status.'
         }
     },

@@ -95,19 +95,20 @@ const edit = async(req, res) => {
             if (contract.ownerId === property.ownerId) { existingContract = contract }
         });
 
-        if ( property.ownerId === existingContract.ownerId  && property._id.toString() === existingContract.propertyId && updatedJoinRequest.status === 'Accepted') {
+        if ( property.ownerId === existingContract.ownerId && property._id.toString() === existingContract.propertyId && updatedJoinRequest.status === 'Accepted') {
             existingTenantList = existingContract.tenants;
 
-            // Checking if the following tenant isn't already in the contract.
-            existingTenantList.forEach(tenant => {
-                existingTenantList.push({
-                    tenantId: updatedJoinRequest.requestingUserId,
-                    tenantName: updatedJoinRequest.fullName,
-                    tenantEmail: updatedJoinRequest.email,
-                    tenantPhone: updatedJoinRequest.phone,
-                });
-                existingContract.tenants = existingTenantList;
+            existingTenantList.push({
+                tenantId: updatedJoinRequest.requestingUserId,
+                tenantName: updatedJoinRequest.fullName,
+                tenantEmail: updatedJoinRequest.email,
+                tenantPhone: updatedJoinRequest.phone,
             });
+            // if (existingTenantList[existingTenantList.length-1].tenantId !== updatedJoinRequest.requestingUserId) {
+                
+            // }
+
+            existingContract.tenants = existingTenantList;
 
             const updated = await Contract.findByIdAndUpdate(existingContract._id, existingContract);
             const updatedContract = await Contract.findById(updated._id);
