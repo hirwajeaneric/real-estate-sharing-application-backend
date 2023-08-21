@@ -9,6 +9,10 @@ const propertySchema = new mongoose.Schema({
         type: Number, 
         required: [true, 'Rent price must be provided'] 
     },
+    // number: {
+    //     type: Number,
+    //     required: true,
+    // },
     propertyType: { 
         type: String,
         required: false, 

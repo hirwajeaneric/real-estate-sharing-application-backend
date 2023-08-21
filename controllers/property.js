@@ -132,9 +132,15 @@ const edit = async(req, res) => {
 };
 
 function fetchLatestUploadedProperty(properties) {
-    const latestProperty = properties.reduce((latest, property) => {
-      return new Date(property.lastUpdated) > new Date(latest.lastUpdated) ? property : latest;
-    });
+    var unpaid = properties.filter(element => element.status === 'Unpaid')
+    
+    const latestProperty =  unpaid.reduce((prev, current) => {
+        if (!prev || current.createdOn > prev.createdOn) {
+          return current;
+        } else {
+          return prev;
+        }
+    }, null);
 
     return latestProperty;
 };
@@ -144,9 +150,17 @@ const editLatest = async(req, res) => {
 
     const userProperties = await PropertyModel.find({ ownerId: ownerId });
     const latestPostedProperty = fetchLatestUploadedProperty(userProperties);
+    
+    console.log(latestPostedProperty);
+
     await PropertyModel.findByIdAndUpdate({ _id: latestPostedProperty._id }, { status: status });
 
     res.status(StatusCodes.OK).json({ message: 'Updated' });
+};
+
+const deleteUnpaid = async(req, res) => {
+    const deleted = await PropertyModel.deleteMany({ status: 'Unpaid'});
+    res.status(StatusCodes.OK).json({ message: 'Deleted all unpaid properties'})
 };
 
 const remove = async(req, res) => {
@@ -160,4 +174,4 @@ const remove = async(req, res) => {
     res.status(StatusCodes.OK).json({ message: 'Deleted'})
 };
 
-module.exports = { add, getAll, findById, findByStatus, findByLocation, findByOwnerId, findByMapCoordinates, findByPostId, edit, editLatest, upload, attachFile, remove }
+module.exports = { add, getAll, findById, findByStatus, findByLocation, findByOwnerId, findByMapCoordinates, findByPostId, edit, editLatest, upload, attachFile, deleteUnpaid, remove }
